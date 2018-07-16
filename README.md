@@ -2,6 +2,8 @@ This is a toy app which generates pixel grids, like so:
 
 ![pixel grid](output/small_sg.png)
 
+For more context, check out the [Generative Laptop Skin](https://serialized.net/2018/07/generative-laptop-skin/) post on my blog.
+
 It comes with a CLI app (`stickergen`) and has been transpiled to javascript with [gopherjs](https://github.com/gopherjs/gopherjs) so it can be embedded in web apps.
 
 Command line options:
