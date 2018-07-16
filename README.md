@@ -15,18 +15,24 @@ Command line options:
 
 To use javascript, include the script:
 
-  <script src="stickergen.js"></script>
+```
+<script src="stickergen.js"></script>
+```
 
 And then call the function:
 
-  var img = generateImage(rows, columns, cellsize, firstColor, secondColor)
+```
+var img = generateImage(rows, columns, cellsize, firstColor, secondColor)
+```
 
 The returned value is a Data URI encoded PNG, so can be assigned as the `src` attribute of an `img` element. Example usage:
 
-  <img id="targetImg"></img>
+```
+<img id="targetImg"></img>
 
-  ...
-  myImg = document.getElementById("targetImg")
-  myImg.src = generateImage(40, 80, 9, "#f21326", "#eac4f9")
+...
+myImg = document.getElementById("targetImg")
+myImg.src = generateImage(40, 80, 9, "#f21326", "#eac4f9")
+```
 
 There is a more fully worked example in `index.html` in this repository.
