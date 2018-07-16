@@ -2,6 +2,7 @@ package render
 
 import (
 	"errors"
+	"fmt"
 	"image/color"
 	"io"
 	"math/rand"
@@ -13,6 +14,8 @@ import (
 func loadPalette(c1 string, c2 string) []color.Color {
 	var color1 colorful.Color
 	var color2 colorful.Color
+	var err error
+
 	if c1 == "sendgrid" {
 		return []color.Color{
 			color.RGBA{130, 227, 247, 255},
@@ -28,9 +31,17 @@ func loadPalette(c1 string, c2 string) []color.Color {
 		color1 = colorful.WarmColor()
 		color2 = colorful.HappyColor()
 	} else {
-		// TODO trap errors here
-		color1, _ = colorful.Hex(c1)
-		color2, _ = colorful.Hex(c2)
+		color1, err = colorful.Hex(c1)
+		if err != nil {
+			fmt.Println("First color not a hex string (e.g. #00AA00), replacing with random warm color")
+			color1 = colorful.WarmColor()
+		}
+
+		color2, err = colorful.Hex(c2)
+		if err != nil {
+			fmt.Println("Second color not a hex string (e.g. #00AA00), replacing with random happy color")
+			color2 = colorful.HappyColor()
+		}
 	}
 
 	// pal := colorful.FastHappyPalette(8)
