@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Color Picker</title>
+
+  </head>
+  <body>
+    <p>
+      <span>Color #1:</span>
+      <input type="text" id="color1" class="colorPicker" value="#3f43bf">
+      <svg id="d1" style="display:inline;" height="15" width="15">
+        <rect x="0" y="0" width="15" height="15"/>
+      </svg>
+    </p>
+    <p>
+      <span>Color #2:</span>
+      <input type="text" id="color2" class="colorPicker" value="#11e4e4">
+      <svg id="d2" style="display:inline;" height="15" width="15">
+        <rect x="0" y="0" width="15" height="15"/>
+      </svg>
+    </p>
+    <img src="#" id="genImg" style="display:none"></img>
+    <link href="color-picker.min.css" rel="stylesheet">
+    <script src="stickergen.js"></script>
+    <script src="color-picker.min.js"></script>
+
+    <script>
+
+    var c1 = document.getElementById("color1")
+    var c2 = document.getElementById("color2")
+    var d1 = document.getElementById("d1")
+    var d2 = document.getElementById("d2")
+    var gImg = document.getElementById("genImg")
+    function updateImage() {
+      d1.setAttribute("fill", c1.value);
+      d2.setAttribute("fill", c2.value);
+      gImg.src = generateImage(40, 80, 9, c1.value, c2.value)
+      gImg.style = "display:block"
+    }
+
+    var target = document.querySelectorAll('input.colorPicker');
+    // set hooks for each target element
+    for (var i = 0, len = target.length; i < len; ++i) {
+        (new CP(target[i])).on("change", function(color) {
+            var newVal = '#' + color;
+            if (this.target.value === newVal) {
+              return
+            }
+            this.target.value = newVal
+            updateImage()
+          });
+    }
+    updateImage()
+
+    </script>
+
+  </body>
+</html>
