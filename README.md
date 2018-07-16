@@ -6,12 +6,13 @@ It comes with a CLI app (`stickergen`) and has been transpiled to javascript wit
 
 Command line options:
 
+```
   --rows value, -r value      (default: 50)
   --cols value, -c value      (default: 72)
   --cellsize value, -s value  (default: 35)
   --outfile value, -o value   (default: "output.png")
   --palette value, -p value   (default: "random")
-
+```
 
 To use javascript, include the script:
 
